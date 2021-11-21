@@ -1,0 +1,25 @@
+{
+  "name": "tech-blog",
+  "version": "1.0.0",
+  "description": "Coming soon...",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/laurelthorburn/Tech-Blog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/laurelthorburn/Tech-Blog/issues"
+  },
+  "homepage": "https://github.com/laurelthorburn/Tech-Blog#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^10.0.0",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.12.0-alpha.1"
+  }
+}
