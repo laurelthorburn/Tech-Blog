@@ -1,4 +1,6 @@
-[
+const { Post } = require('../models')
+
+const postdata = [
     {
     "post_title": "My Random Thoughts",
     "post_content": "Oh the things I could say.  Did you know that donuts aren't just good for your health they're also good for your spirit!  I know, right... let's out down the laptop and go get some donuts instead!",
@@ -14,4 +16,8 @@
     "post_content": "Have you ever taken a bite of a donut and you just knew, this is your most favorite donut.  My person favorite is the ODB from Voodoo donuts.  I love the combination of peanut butter and oreo.  Oh man, I better stop typing and start driving to Voodoo to get one.  What's your favorite donut?",
     "user_id": 3
 }
-]
+];
+
+const seedPost = () => Post.bulkCreate(postdata);
+
+module.exports = seedPost;
