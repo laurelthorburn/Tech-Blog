@@ -3,12 +3,12 @@ const { Post } = require('../models')
 const postdata = [
     {
     "post_title": "My Random Thoughts",
-    "post_content": "Oh the things I could say.  Did you know that donuts aren't just good for your health they're also good for your spirit!  I know, right... let's out down the laptop and go get some donuts instead!",
+    "post_content": "Oh the things I could say.  Did you know that donuts aren't just good for your health they're also good for your spirit!  I know, right... let's put down the laptop and go get some donuts instead!",
     "user_id": 1
 },
     {
     "post_title": "Oh glorious donuts",
-    "post_content": "Just the other day I took a bite into a chocolate donuts, and oh me oh my what a little slice of heaven it was.  Now, why don't we eat more donuts on the daily?!  That is the real question, I do declare!",
+    "post_content": "Just the other day I took a bite into a chocolate donut, and oh me oh my what a little slice of heaven it was.  Now, why don't we eat more donuts on the daily?!  That is the real question, I do declare!",
     "user_id": 2
 },
     {
