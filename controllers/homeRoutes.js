@@ -2,6 +2,7 @@
 // create route for the homepage but not entirely, need it to hit the body route
 
 const router = require('express').Router();
+const { route } = require('.');
 const { User, Post, Comment } = require('./../models');
 
 // router.get("/", (req, res) => {
@@ -28,6 +29,12 @@ console.log(posts)
       res.status(500).json(err);
     }
   });
+
+  router.get("/login", (req, res) => {
+    console.log("Is the login page rendering??");
+    res.render("login");
+
+  });
   
   // GET a single post
   router.get('/:id', async (req, res) => {
@@ -46,5 +53,6 @@ console.log(posts)
       res.status(500).json(err);
     }
   });
+
 
 module.exports = router;
