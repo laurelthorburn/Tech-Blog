@@ -1,3 +1,5 @@
+console.log("This is a test. Do not panic.  Ths is a test.");
+
 const loginFormHandler = async (event) => {
     event.preventDefault();
   

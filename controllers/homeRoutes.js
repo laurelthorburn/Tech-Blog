@@ -11,11 +11,20 @@ const { User, Post, Comment } = require('./../models');
 // GET all posts
 router.get('/', async (req, res) => {
     try {
-      const postData = await Post.findAll({
-        include: [{ model: User }],
+      const dbPostData = await Post.findAll({
+        // User ,
       });
-      res.status(200).json(postData);
-    } catch (err) {
+
+      const posts = dbPostData.map((post) => 
+      post.get({ plain: true })
+      );
+
+console.log(posts)
+
+    res.render("all", { 
+      posts
+    }); //might need postData wrapped as an obj... tbd
+} catch (err) {
       res.status(500).json(err);
     }
   });
