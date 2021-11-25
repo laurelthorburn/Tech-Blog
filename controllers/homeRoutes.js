@@ -2,7 +2,7 @@
 // create route for the homepage but not entirely, need it to hit the body route
 
 const router = require('express').Router();
-const { User, Post } = require('./../models');
+const { User, Post, Comment } = require('./../models');
 
 // router.get("/", (req, res) => {
 //     res.render("all");
@@ -24,7 +24,7 @@ router.get('/', async (req, res) => {
   router.get('/:id', async (req, res) => {
     try {
       const postData = await Post.findByPk(req.params.id, {
-        include: [{ model: User }],
+        include: [{ model: User }, { model: Comment }],
       });
   
       if (!postData) {
@@ -37,9 +37,5 @@ router.get('/', async (req, res) => {
       res.status(500).json(err);
     }
   });
-  
-  module.exports = router;
-  
-
 
 module.exports = router;

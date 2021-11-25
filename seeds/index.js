@@ -5,7 +5,7 @@ const seedPost = require('./postSeedData');
 const seedComment = require('./commentSeedData');
 
 const seedAll = async () => {
-  await sequelize.sync({ force: true });
+  await sequelize.sync({ force: true }); //connects to my sql db then drops existing table, bc of force true
 
   await seedUser();
 
