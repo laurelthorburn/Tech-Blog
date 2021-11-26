@@ -37,22 +37,46 @@ console.log(posts)
   });
   
   // GET a single post
-  router.get('/:id', async (req, res) => {
+  router.get('/api/:id', async (req, res) => {
     try {
-      const postData = await Post.findByPk(req.params.id, {
+      const dbPostData = await Post.findByPk(req.params.id, {
         include: [{ model: User }, { model: Comment }],
       });
   
-      if (!postData) {
-        res.status(404).json({ message: 'No blog post found with that id!' });
-        return;
-      }
-  
-      res.status(200).json(postData);
-    } catch (err) {
-      res.status(500).json(err);
-    }
+      const post = dbPostData.get({ plain: true });
+          res.render('post', { post, loggedIn: req.session.loggedIn });
+        } catch (err) {
+          console.log(err);
+          res.status(500).json(err);
+        }
   });
 
+
+//   // GET one gallery
+// router.get('/gallery/:id', async (req, res) => {
+//   try {
+//     const dbGalleryData = await Gallery.findByPk(req.params.id, {
+//       include: [
+//         {
+//           model: Painting,
+//           attributes: [
+//             'id',
+//             'title',
+//             'artist',
+//             'exhibition_date',
+//             'filename',
+//             'description',
+//           ],
+//         },
+//       ],
+//     });
+
+//     const gallery = dbGalleryData.get({ plain: true });
+//     res.render('gallery', { gallery, loggedIn: req.session.loggedIn });
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json(err);
+//   }
+// });
 
 module.exports = router;
