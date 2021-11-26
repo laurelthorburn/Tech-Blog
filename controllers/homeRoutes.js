@@ -2,12 +2,8 @@
 // create route for the homepage but not entirely, need it to hit the body route
 
 const router = require('express').Router();
-const { route } = require('.');
+const { route } = require('.'); // do i need this?
 const { User, Post, Comment } = require('./../models');
-
-// router.get("/", (req, res) => {
-//     res.render("all");
-// });
 
 // GET all posts
 router.get('/', async (req, res) => {
@@ -30,10 +26,13 @@ console.log(posts)
     }
   });
 
+  // Login route
   router.get("/login", (req, res) => {
-    console.log("Is the login page rendering??");
-    res.render("login");
-
+    if (req.session.loggedIn) {
+      res.redirect('/');
+      return;
+    }
+    res.render('login');
   });
   
   // GET a single post
