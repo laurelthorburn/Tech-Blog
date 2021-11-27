@@ -35,16 +35,20 @@ router.get('/', async (req, res) => {
   
   // GET a single post
   router.get('/:id', async (req, res) => {
-    console.log("HELLLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
     try {
       const dbPostData = await Post.findByPk(req.params.id
+        , {
+        include: [{ model: Comment }],
+      }
+      );
       //   , {
       //   include: [{ model: User }, { model: Comment }],
       // }
-      );
+      // );
   
       const post = dbPostData.get({ plain: true });
-      console.log(post);
+      // console.log(post);
+      console.log(post.comments);
           res.render('post',
            {
              post,

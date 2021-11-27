@@ -11,6 +11,15 @@
   <div class="card-body">
     <h5 class="card-title">{{post.post_title}}</h5>
     <p class="card-text">{{post.post_content}}</p>
-    {{!-- <a href="/{{id}}" class="btn btn-light">Read More...</a> --}}
+    <a href="/#" class="btn btn-light">Add a comment</a>
   </div>
 </div>
+
+{{#each post.comments}}
+<div class="card text-white bg-info w-50 mx-auto border-secondary m-3 ">
+  <div class="card-body">
+    <h5 class="card-title">{{this.user_id}}</h5>
+    <p class="card-text">{{this.comment_content}}</p>
+  </div>
+</div>
+{{/each}}
