@@ -32,6 +32,29 @@ router.get('/', async (req, res) => {
     }
     res.render('login');
   });
+
+  // GET all a user's posts
+  // router.get("/:user_id", async (req, res) => {
+  //   try {
+  //     const dbUserData = await User.findAll(req.params.user_id
+  //       , {
+  //       include: [{ model: Post }],
+  //     }
+  //     );
+  
+  //     const user = dbUserData.get({ plain: true });
+  //     // console.log(post);
+  //     console.log(user);
+  //         res.render('dashboard',
+  //          {
+  //            user,
+  //           loggedIn: req.session.loggedIn
+  //         });
+  //       } catch (err) {
+  //         console.log(err);
+  //         res.status(500).json(err);
+  //       }
+  // });
   
   // GET a single post
   router.get('/:id', async (req, res) => {
