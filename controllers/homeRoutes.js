@@ -15,11 +15,9 @@ router.get('/', async (req, res) => {
       const posts = dbPostData.map((post) => 
       post.get({ plain: true })
       );
-
-console.log(posts)
-
     res.render("all", { 
-      posts
+      posts,
+      loggedIn: req.session.loggedIn,
     }); //might need postData wrapped as an obj... tbd
 } catch (err) {
       res.status(500).json(err);
@@ -36,46 +34,20 @@ console.log(posts)
   });
   
   // GET a single post
-  router.get('/api/:id', async (req, res) => {
+  router.get('/api/:id', async (req, res) => { //link might be wrong
     try {
       const dbPostData = await Post.findByPk(req.params.id, {
         include: [{ model: User }, { model: Comment }],
       });
   
       const post = dbPostData.get({ plain: true });
-          res.render('post', { post, loggedIn: req.session.loggedIn });
+          res.render('post', { post,
+            loggedIn: req.session.loggedIn });
         } catch (err) {
           console.log(err);
           res.status(500).json(err);
         }
   });
 
-
-//   // GET one gallery
-// router.get('/gallery/:id', async (req, res) => {
-//   try {
-//     const dbGalleryData = await Gallery.findByPk(req.params.id, {
-//       include: [
-//         {
-//           model: Painting,
-//           attributes: [
-//             'id',
-//             'title',
-//             'artist',
-//             'exhibition_date',
-//             'filename',
-//             'description',
-//           ],
-//         },
-//       ],
-//     });
-
-//     const gallery = dbGalleryData.get({ plain: true });
-//     res.render('gallery', { gallery, loggedIn: req.session.loggedIn });
-//   } catch (err) {
-//     console.log(err);
-//     res.status(500).json(err);
-//   }
-// });
 
 module.exports = router;

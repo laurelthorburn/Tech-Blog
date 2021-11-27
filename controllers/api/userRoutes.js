@@ -1,11 +1,5 @@
 const router = require('express').Router();
-const bcrypt = require('bcrypt');
 const User = require('../../models/User');
-
-// router.get('/', (req, res) => {
-//   //Serves the body of the page aka "main.handlebars" to the container //aka "index.handlebars"
-//   res.render('all');
-//   });
 
 // CREATE new user
 router.post('/', async (req, res) => {
@@ -38,7 +32,7 @@ router.post('/login', async (req, res) => {
     if (!dbUserData) {
       res
         .status(400)
-        .json({ message: 'USERNAMETEST Incorrect username or password. Please try again!' });
+        .json({ message: 'Incorrect username or password. Please try again!' });
       return;
     }
 
@@ -47,7 +41,7 @@ router.post('/login', async (req, res) => {
     if (!validPassword) {
       res
         .status(400)
-        .json({ message: 'PASSWORDTEST Incorrect username or password. Please try again!' });
+        .json({ message: 'Incorrect username or password. Please try again!' });
       return;
     }
 
