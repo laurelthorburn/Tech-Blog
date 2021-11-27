@@ -34,15 +34,22 @@ router.get('/', async (req, res) => {
   });
   
   // GET a single post
-  router.get('/api/:id', async (req, res) => { //link might be wrong
+  router.get('/:id', async (req, res) => {
+    console.log("HELLLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
     try {
-      const dbPostData = await Post.findByPk(req.params.id, {
-        include: [{ model: User }, { model: Comment }],
-      });
+      const dbPostData = await Post.findByPk(req.params.id
+      //   , {
+      //   include: [{ model: User }, { model: Comment }],
+      // }
+      );
   
       const post = dbPostData.get({ plain: true });
-          res.render('post', { post,
-            loggedIn: req.session.loggedIn });
+      console.log(post);
+          res.render('post',
+           {
+             post,
+            loggedIn: req.session.loggedIn
+          });
         } catch (err) {
           console.log(err);
           res.status(500).json(err);
