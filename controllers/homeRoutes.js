@@ -15,8 +15,6 @@ router.get('/', async (req, res) => {
       const posts = dbPostData.map((post) => 
       post.get({ plain: true })
       );
-
-      console.log(posts);
     res.render("all", { 
       posts,
       loggedIn: req.session.loggedIn,
@@ -72,7 +70,7 @@ router.get('/', async (req, res) => {
       // );
   
       const post = dbPostData.get({ plain: true });
-      // console.log(post);
+      console.log(post);
       console.log(post.comments);
           res.render('post',
            {
