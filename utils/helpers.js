@@ -12,3 +12,19 @@ hb.registerHelper('format_date', function(date) {
 hb.registerHelper('loud', function (aString) {
     return aString.toUpperCase()
 })
+
+// hb.registerHelper("log", function(something) {
+//     console.log(something);
+//   });
+
+hb.registerHelper("debug", function(optionalValue) {
+    console.log("Current Context");
+    console.log("====================");
+    console.log(this);
+  
+    if (optionalValue) {
+      console.log("Value");
+      console.log("====================");
+      console.log(optionalValue);
+    }
+  });
