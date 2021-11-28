@@ -4,17 +4,22 @@
 const router = require('express').Router();
 const { route } = require('.'); // do i need this?
 const { User, Post, Comment } = require('./../models');
+const withAuth = require('../utils/auth');
+
+// -------------------------------------------------------------
 
 // GET all posts
 router.get('/', async (req, res) => {
     try {
       const dbPostData = await Post.findAll({
-       include: User
+       include: User, 
       });
 
       const posts = dbPostData.map((post) => 
       post.get({ plain: true })
       );
+
+      console.log(posts)
     res.render("all", { 
       posts,
       loggedIn: req.session.loggedIn,
@@ -24,6 +29,29 @@ router.get('/', async (req, res) => {
     }
   });
 
+
+// -----------------------------------------------------------------
+
+  // dashboard route (all logged in user's posts)
+  router.get('/dashboard', async (req, res) => {
+    try {
+      const userData = await User.findAll({
+        attributes: { exclude: ['password'] },
+        // order: [['name', 'ASC']],
+      });
+  
+      const users = userData.map((project) => project.get({ plain: true }));
+  
+      res.render('dashboard', {
+        users,
+        logged_in: req.session.logged_in,
+      });
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  });
+
+    // ------------------------------------------------------------
   // Login route
   router.get("/login", (req, res) => {
     if (req.session.loggedIn) {
@@ -55,6 +83,8 @@ router.get('/', async (req, res) => {
   //         res.status(500).json(err);
   //       }
   // });
+
+  // -----------------------------------------------------------------
   
   // GET a single post
   router.get('/:id', async (req, res) => {
