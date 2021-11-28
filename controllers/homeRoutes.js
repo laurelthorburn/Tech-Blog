@@ -61,7 +61,7 @@ router.get('/', async (req, res) => {
     try {
       const dbPostData = await Post.findByPk(req.params.id
         , {
-        include: [{ model: Comment }],
+        include: [{ model: Comment }, {model: User}],
       }
       );
       //   , {
