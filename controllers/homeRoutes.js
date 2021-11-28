@@ -9,12 +9,14 @@ const { User, Post, Comment } = require('./../models');
 router.get('/', async (req, res) => {
     try {
       const dbPostData = await Post.findAll({
-        // User ,
+       include: User
       });
 
       const posts = dbPostData.map((post) => 
       post.get({ plain: true })
       );
+
+      console.log(posts);
     res.render("all", { 
       posts,
       loggedIn: req.session.loggedIn,
