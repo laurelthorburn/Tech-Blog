@@ -19,11 +19,12 @@ router.get('/', async (req, res) => {
       post.get({ plain: true })
       );
 
-      console.log(posts)
     res.render("all", { 
       posts,
+      username: req.session.username,
       loggedIn: req.session.loggedIn,
-    }); //might need postData wrapped as an obj... tbd
+    });
+    // console.log("req.username TESTTTTT:", req); //undefined for req.user/username and {} for req.body
 } catch (err) {
       res.status(500).json(err);
     }
@@ -34,21 +35,31 @@ router.get('/', async (req, res) => {
 
   // dashboard route (all logged in user's posts)
   router.get('/dashboard', async (req, res) => {
+
+   if (!req.session.loggedIn) {
+      res.redirect('/login');
+      return;
+    }
+
     try {
-      const userData = await User.findAll({
-        attributes: { exclude: ['password'] },
-        // order: [['name', 'ASC']],
+      const postData = await Post.findAll({
+        // i want to show all of the user's posts
+        where : { user_id : req.session.user_id }
       });
   
-      const users = userData.map((project) => project.get({ plain: true }));
-  
+      const posts = postData.map((project) => project.get({ plain: true }));
+
+  console.log(posts); //can't check really until have create new posts by this user
+
       res.render('dashboard', {
-        users,
+        posts,
+        username: req.session.username,
+        userID: req.session.user_id,
         logged_in: req.session.logged_in,
       });
     } catch (err) {
       res.status(500).json(err);
-    }
+    } 
   });
 
     // ------------------------------------------------------------
@@ -88,6 +99,11 @@ router.get('/', async (req, res) => {
   
   // GET a single post
   router.get('/:id', async (req, res) => {
+    if (!req.session.loggedIn) {
+      res.redirect('/login');
+      return;
+    }
+
     try {
       const dbPostData = await Post.findByPk(req.params.id
         , {
