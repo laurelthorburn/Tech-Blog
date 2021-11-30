@@ -2,7 +2,6 @@
   <meta charset="UTF-8">
   <title>Laurel's Tech Babble</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="../../public/css/jass.css">
   <link rel="stylesheet" href="../../public/css/style.css">
 </head>
 
@@ -38,13 +37,14 @@
         {{{ body }}}
  
   </div>
-  </body>
 
-</html>
-
-{{!-- need jS here, link js scripts --}}
+  {{!-- need jS here, link js scripts --}}
   {{#if loggedIn}}
   <script src="/js/logout.js"></script>
 {{else}}
 <script src="/js/login.js"></script> 
   {{/if}}
+
+  </body>
+
+</html>

@@ -1,31 +1,53 @@
-<!-- This template includes hardcoded data. In future lessons, you will be rendering data dynamically. -->
-
 <div class="menu-container">
   <div class="card-header col-md-10">
     <h2>
-      📖 Read YOUR Latest Blog Posts... 🍩, you are logged in as {{username}} and your unique id is {{userID}}
+      📖 Read YOUR Latest Blog Posts... 🍩, you are logged in as {{username}} and your unique id is
+{{!--       
+       {{userID}} {{user_id}} --}}
     </h2>
   </div>
 
-<button href="/newPost">Add a new post</button>
-
-{{!-- display user's current posts down here --}}
-
-{{!-- <div class="card text-white bg-info w-50 mx-auto border-secondary m-3 ">
-  <div class="card-body">
-    <h5 class="card-title">{{post.post_title}}</h5>
-    <p class="card-text">{{post.post_content}}</p>
-    <a href="/newcomment" class="btn btn-light" id="post-comment">Add a comment</a>
+<div class="row">
+  <div class="col-auto">
+    <h2>Welcome, {{username}}!</h2>
   </div>
 </div>
 
-{{#each post.comments}}
-<div class="card text-white bg-secondary w-50 mx-auto border-secondary m-3 ">
-  <div class="card-body">
-    <h5 class="card-title">{{this.user_id}}</h5>
-    <p class="card-text">{{this.comment_content}}</p>
-  </div>
-</div>
-{{/each}} --}}
+<div class="row mt-4">
+  <div class="col-md-6">
+    <h3>Create a New Post:</h3>
 
-<script src="/js/post.js"></script>
+    <form class="form new-post-form">
+      <div class="form-group">
+        <label for="post-name">post name:</label>
+        <input class="form-input" type="text" id="post-name" name="post-name" />
+      </div>
+      <div class="form-group">
+        <label for="post-desc">description:</label>
+        <textarea class="form-input" id="post-desc" name="post-desc"></textarea>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Create</button>
+      </div>
+    </form>
+  </div>
+
+  {{#if posts.length}}
+  <div class="col-md-6 post-list">
+    <h3>Current posts:</h3>
+
+    {{#each posts as |post|}}
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <h4><a href="/{{post.id}}">{{post.post_title}}</a></h4>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-sm btn-danger" data-id="{{post.id}}">DELETE</button>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  {{/if}}
+</div>
+
+<script src="./js/post.js"></script>

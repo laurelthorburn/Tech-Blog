@@ -6,9 +6,9 @@ Comment.belongsTo(User, {
   foreignKey: 'user_id',
 });
 
-// User.hasMany(Comment, {
-//   foreignKey: 'user_id',
-// });
+User.hasMany(Comment, {
+  foreignKey: 'user_id',
+});
 
 // Define a User as having many Posts, thus creating a foreign key in the `user` table
 User.hasMany(Post, {
