@@ -1,58 +1,30 @@
-const comment = document.getElementById("post-comment");
+const newFormHandler = async (event) => {
+  event.preventDefault();
 
-addComment = (event) => {
-    event.preventDefault();
-    console.log("YOU MADE IT!");
- };
-
- comment.addEventListener("click", addPost);
+  const comment_content = document.querySelector('#comment-content').value;
 
 
- const newFormHandler = async (event) => {
-    event.preventDefault();
-  
-    const name = document.querySelector('#project-name').value.trim();
-    const needed_funding = document.querySelector('#project-funding').value.trim();
-    const description = document.querySelector('#project-desc').value.trim();
-  
-    if (name && needed_funding && description) {
-      const response = await fetch(`/api/projects`, {
-        method: 'POST',
-        body: JSON.stringify({ name, needed_funding, description }),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-  
-      if (response.ok) {
-        document.location.replace('/profile');
-      } else {
-        alert('Failed to create project');
-      }
+  // capture :id as a variable, send in the variable
+  if (comment_content) {
+    
+    const response = await fetch(`/api/posts/comment`, { // i need to pass the post id to this?
+      method: 'POST',
+      body: JSON.stringify({ comment_content }), //post_id doesnt work
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (response.ok) {
+      document.location.reload();
+    } else {
+      alert('Failed to create comment');
     }
-  };
-  
-  const delButtonHandler = async (event) => {
-    if (event.target.hasAttribute('data-id')) {
-      const id = event.target.getAttribute('data-id');
-  
-      const response = await fetch(`/api/projects/${id}`, {
-        method: 'DELETE',
-      });
-  
-      if (response.ok) {
-        document.location.replace('/profile');
-      } else {
-        alert('Failed to delete project');
-      }
-    }
-  };
-  
-  document
-    .querySelector('.new-project-form')
-    .addEventListener('submit', newFormHandler);
-  
-  document
-    .querySelector('.project-list')
-    .addEventListener('click', delButtonHandler);
-  
+  }
+};
+
+
+document
+  .querySelector('.new-comment-form')
+  .addEventListener('submit', newFormHandler);
+

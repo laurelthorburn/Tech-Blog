@@ -3,7 +3,7 @@
 <div class="menu-container">
   <div class="card-header col-md-10">
     <h2>
-      📖 Read THIS Latest Blog Posts... 🍩
+      📖 Read THIS Latest Blog Posts... 🍩 where am i???????
     </h2>
   </div>
 
@@ -12,7 +12,6 @@
     <h5 class="card-title">{{post.post_title}}</h5>
         <p>Author: {{loud post.user.username}} Date: {{format_date post.createdAt}}</p>
     <p class="card-text">{{post.post_content}}</p>
-    <a href="/newcomment" class="btn btn-light" id="post-comment">Add a comment</a>
   </div>
 </div>
 
@@ -25,5 +24,21 @@
   </div>
 </div>
 {{/each}}
+
+
+<div class="row mt-4">
+  <div class="col-md-6">
+    <h3>Create a New Post:</h3>
+
+    <form class="form new-comment-form">
+      <div class="form-group">
+        <label for="comment-content">write a response:</label>
+        <textarea class="form-input" id="comment-content" name="comment-content"></textarea>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Add</button>
+      </div>
+    </form>
+  </div>
 
 <script src="/js/comment.js"></script>

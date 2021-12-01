@@ -36,6 +36,11 @@ router.get("/", async (req, res) => {
   
 // Use withAuth middleware to prevent access to route <-- not suing this yet
 router.get('/dashboard', async (req, res) => {
+  if (!req.session.loggedIn) {
+    res.redirect("/login");
+    return;
+  }
+  
   try {
     
     // Find the logged in user based on the session ID
@@ -46,15 +51,15 @@ router.get('/dashboard', async (req, res) => {
       [{ model: Post }],
     });
 
-    console.log("THIS IS USERDATA:",
-    userData,
-    "==================================");
+    // console.log("THIS IS USERDATA:",
+    // userData,
+    // "==================================");
 
     const user = userData.get({ plain: true });
 
-    console.log("USERRRRRRRRRRRRRRRRRR",
-    user,
-    "=====================================")
+    // console.log("USERRRRRRRRRRRRRRRRRR",
+    // user,
+    // "=====================================")
     res.render('dashboard', {
       ...user,
      loggedIn: req.session.loggedIn
@@ -74,29 +79,6 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
-// GET all a user's posts
-// router.get("/:user_id", async (req, res) => {
-//   try {
-//     const dbUserData = await User.findAll(req.params.user_id
-//       , {
-//       include: [{ model: Post }],
-//     }
-//     );
-
-//     const user = dbUserData.get({ plain: true });
-//     // console.log(post);
-//     console.log(user);
-//         res.render('dashboard',
-//          {
-//            user,
-//           loggedIn: req.session.loggedIn
-//         });
-//       } catch (err) {
-//         console.log(err);
-//         res.status(500).json(err);
-//       }
-// });
-
 // -----------------------------------------------------------------
 
 // GET a single post
@@ -107,6 +89,8 @@ router.get("/:id", async (req, res) => {
   }
 
   try {
+
+    // console.log(req)
     const dbPostData = await Post.findByPk(req.params.id, {
       include: [
         {
@@ -120,9 +104,19 @@ router.get("/:id", async (req, res) => {
         { model: User, attributes: ["username"] },
       ],
     });
-    console.log("dbPostData", dbPostData);
+
+    // console.log(req.params.id);
+
     const post = dbPostData.get({ plain: true });
-    console.log("post", post);
+
+    // console.log("============",
+    // post)
+
+    req.session.post_id = post.id;
+
+    console.log("I AM THE POST ID... I HOPE",
+    req.session.post_id) // works
+
     res.render("post", {
       post,
       loggedIn: req.session.loggedIn,
