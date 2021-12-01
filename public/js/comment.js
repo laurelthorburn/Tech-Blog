@@ -9,14 +9,14 @@ const newFormHandler = async (event) => {
     
     const response = await fetch(`/api/posts/comment`, { // i need to pass the post id to this?
       method: 'POST',
-      body: JSON.stringify({ comment_content }), //post_id doesnt work
+      body: JSON.stringify({ comment_content }), 
       headers: {
         'Content-Type': 'application/json',
       },
     });
 
     if (response.ok) {
-      document.location.reload();
+      document.location.reload(); //CAN I JUST REFRESH THE PAGE?
     } else {
       alert('Failed to create comment');
     }

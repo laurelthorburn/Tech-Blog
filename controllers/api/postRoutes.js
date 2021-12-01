@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Post } = require('../../models');
+const { User, Post, Comment } = require('../../models');
 
 router.post('/', async (req, res) => {
   try {
@@ -22,7 +22,7 @@ router.post('/comment', async (req, res) => {
 
   try {
 
-    // console.log("Do you make it to meeee? 2") //yes
+    console.log("Do you make it to meeee? 2") //yes
     // console.log(req.session.post_id) //yes
 
     // console.log(req.body.comment_content) //yes
@@ -34,6 +34,8 @@ router.post('/comment', async (req, res) => {
       user_id: req.session.user_id,
       post_id: req.session.post_id,
     });
+
+    console.log("HELLO, do you make it to me 3");
 
     console.log("============================",
     newComment,
