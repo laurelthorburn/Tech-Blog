@@ -36,6 +36,24 @@ const newFormHandler = async (event) => {
      }
    }
  };
+
+ const updateButtonHandler = async (event) => {
+   if (event.target.hasAttribute('data-update')) {
+     const id = event.target.getAttribute('data-update');
+ 
+     const response = await fetch(`/api/posts/${id}`, {
+       method: 'PUT',
+     });
+ 
+     if (response.ok) {
+       document.location.replace('/dashboard');
+     } else {
+       alert('Failed to update post');
+     }
+   }
+ };
+ 
+ 
  
  document
    .querySelector('.new-post-form')
@@ -44,4 +62,8 @@ const newFormHandler = async (event) => {
  document
    .querySelector('.post-list')
    .addEventListener('click', delButtonHandler);
+
+ document
+   .querySelector('.post-list')
+   .addEventListener('click', updateButtonHandler);
  

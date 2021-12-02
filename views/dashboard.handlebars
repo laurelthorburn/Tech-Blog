@@ -1,20 +1,9 @@
 <div class="menu-container">
-  <div class="card-header col-md-10">
-    <h2>
-      📖 Read YOUR Latest Blog Posts... 🍩, you are logged in as {{username}} and your unique id is
-{{!--       
-       {{userID}} {{user_id}} --}}
-    </h2>
-  </div>
 
-<div class="row">
-  <div class="col-auto">
-    <h2>Welcome, {{username}}!</h2>
-  </div>
-</div>
+    <h2>Welcome to your dashboard, {{username}}!</h2>
 
-<div class="row mt-4">
-  <div class="col-md-6">
+<div class="row mx-auto mt-3">
+  <div class="col-md-5 ml-1">
     <h3>Create a New Post:</h3>
 
     <form class="form new-post-form">
@@ -33,7 +22,7 @@
   </div>
 
   {{#if posts.length}}
-  <div class="col-md-6 post-list">
+  <div class="col-md-5 post-list">
     <h3>Current posts:</h3>
 
     {{#each posts as |post|}}
@@ -42,6 +31,7 @@
         <h4><a href="/{{post.id}}">{{post.post_title}}</a></h4>
       </div>
       <div class="col-md-4">
+        <button class="btn btn-sm btn-success" data-update="{{post.id}}">UPDATE</button>
         <button class="btn btn-sm btn-danger" data-id="{{post.id}}">DELETE</button>
       </div>
     </div>

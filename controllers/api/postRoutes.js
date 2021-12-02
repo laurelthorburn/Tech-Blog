@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { User, Post, Comment } = require('../../models');
+const { update } = require('../../models/User');
 
 router.post('/', async (req, res) => {
   try {
@@ -18,16 +19,8 @@ router.post('/', async (req, res) => {
 
 router.post('/comment', async (req, res) => {
 
-  console.log("Do you make it to meeee? 1") //yes 
 
   try {
-
-    console.log("Do you make it to meeee? 2") //yes
-    // console.log(req.session.post_id) //yes
-
-    // console.log(req.body.comment_content) //yes
-    console.log(req.session.user_id) //yes
-
 
     const newComment = await Comment.create({
       comment_content: req.body.comment_content,
@@ -35,7 +28,6 @@ router.post('/comment', async (req, res) => {
       post_id: req.session.post_id,
     });
 
-    console.log("HELLO, do you make it to me 3");
 
     console.log("============================",
     newComment,
@@ -46,6 +38,28 @@ router.post('/comment', async (req, res) => {
     res.status(400).json(err);
   }
 });
+
+//updating a user's post
+
+router.put('/:id', async (req, res) => {
+  console.log("Test console 1");
+  try {
+    console.log("Test console 2");
+console.log(req.params.id)
+    const updatedComment = Comment.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    })
+    console.log("Test console 3");
+
+    res.status(200).json(updatedComment);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+//deleting user's post
 
 router.delete('/:id', async (req, res) => {
   try {
