@@ -3,7 +3,7 @@
     <h2>Welcome to your dashboard, {{username}}!</h2>
 
 <div class="row mx-auto mt-3">
-  <div class="col-md-5 ml-1">
+  <div class="col-md-5 ml-5 mr-5 card">
     <h3>Create a New Post:</h3>
 
     <form class="form new-post-form">
@@ -22,7 +22,7 @@
   </div>
 
   {{#if posts.length}}
-  <div class="col-md-5 post-list">
+  <div class="col-md-5 ml-5 post-list card">
     <h3>Current posts:</h3>
 
     {{#each posts as |post|}}
@@ -39,5 +39,6 @@
   </div>
   {{/if}}
 </div>
+
 
 <script src="./js/post.js"></script>
