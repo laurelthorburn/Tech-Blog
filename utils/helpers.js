@@ -10,6 +10,9 @@ hb.registerHelper('format_date', function(date) {
 });
 
 hb.registerHelper('loud', function (aString) {
+  if (!aString){
+    return aString;
+  }
     return aString.toUpperCase()
 })
 

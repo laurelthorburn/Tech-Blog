@@ -2,6 +2,37 @@ const router = require('express').Router();
 const { User, Post, Comment } = require('../../models');
 const { update } = require('../../models/User');
 
+router.get('/:id', async (req, res) => {
+  // console.log("but do we get me back?");
+
+  if (!req.session.loggedIn) {
+    res.redirect("/login");
+    return;
+  }
+
+  try {
+
+    const dbPostData = await Post.findByPk(req.params.id,{}); // i removed comments and user... mistake?
+
+    const post = dbPostData.get({ plain: true });
+
+    // console.log("============",
+    // post)
+
+    req.session.post_id = post.id;
+
+    // console.log("I AM THE POST ID... I HOPE",
+    // req.session.post_id) // works
+
+    // console.log(post)
+    
+    res.json(post);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 router.post('/', async (req, res) => {
   try {
     const newPost = await Post.create({
@@ -29,9 +60,9 @@ router.post('/comment', async (req, res) => {
     });
 
 
-    console.log("============================",
-    newComment,
-    "*~*~*~*~*~*~*~*~*~~*~*~*~*");
+    // console.log("============================",
+    // newComment,
+    // "*~*~*~*~*~*~*~*~*~~*~*~*~*");
 
     res.status(200).json(newComment);
   } catch (err) {
@@ -44,14 +75,14 @@ router.post('/comment', async (req, res) => {
 router.put('/:id', async (req, res) => {
   console.log("Test console 1");
   try {
-    console.log("Test console 2");
-console.log(req.params.id)
+    // console.log("Test console 2");
+// console.log(req.params.id)
     const updatedComment = Comment.update(req.body, {
       where: {
         id: req.params.id,
       },
     })
-    console.log("Test console 3");
+    // console.log("Test console 3");
 
     res.status(200).json(updatedComment);
   } catch (err) {

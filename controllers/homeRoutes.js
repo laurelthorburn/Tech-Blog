@@ -83,6 +83,9 @@ router.get("/login", (req, res) => {
 
 // GET a single post
 router.get("/:id", async (req, res) => {
+
+  console.log("but do we get me back?");
+
   if (!req.session.loggedIn) {
     res.redirect("/login");
     return;
@@ -117,6 +120,8 @@ router.get("/:id", async (req, res) => {
     console.log("I AM THE POST ID... I HOPE",
     req.session.post_id) // works
 
+    // console.log(post)
+    
     res.render("post", {
       post,
       loggedIn: req.session.loggedIn,

@@ -37,23 +37,24 @@ const newFormHandler = async (event) => {
    }
  };
 
- const updateButtonHandler = async (event) => {
-   if (event.target.hasAttribute('data-update')) {
-     const id = event.target.getAttribute('data-update');
- 
-     const response = await fetch(`/api/posts/${id}`, {
-       method: 'PUT',
-     });
- 
-     if (response.ok) {
-       document.location.replace('/dashboard');
-     } else {
-       alert('Failed to update post');
-     }
-   }
- };
- 
- 
+const updateButtonHandler = async (event) => {
+  // event.preventDefault();
+  if (event.target.hasAttribute('data-update')) {
+    const id = event.target.getAttribute('data-update');
+  
+  const response = await fetch(`/api/posts/${id}`);
+
+  const postResponse = await response.json(); //converts to readable data
+
+console.log("YOOOOOOOOOO==============",
+postResponse.post_content);
+
+document.querySelector('#message-text').value = postResponse.post_content;
+document.querySelector('#recipient-name').value = postResponse.post_title;
+
+  return postResponse;
+  };
+};
  
  document
    .querySelector('.new-post-form')
