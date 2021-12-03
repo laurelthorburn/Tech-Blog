@@ -2,7 +2,42 @@ const router = require('express').Router();
 const { User, Post, Comment } = require('../../models');
 
 router.get('/:id', async (req, res) => {
+  if (!req.session.loggedIn) {
+    res.redirect("/login");
+    return;
+  }
+
+  try {
+
+    const dbPostData = await Post.findByPk(req.params.id,{
+
+    }); // i removed comments and user... mistake?
+
+    const post = dbPostData.get({ plain: true });
+
+    // console.log("============",
+    // post)
+
+    req.session.post_id = post.id;
+
+    // console.log("I AM THE POST ID... I HOPE",
+    // req.session.post_id) // works
+
+    // console.log(post)
+    
+    res.json(post);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+router.put('/edit/:id', async (req, res) => {
   // console.log("but do we get me back?");
+console.log("YO CHECK OUT MY BOD.",
+req.body)
+
+console.log("IS THIS THE ID???",
+req.params.id)
 
   if (!req.session.loggedIn) {
     res.redirect("/login");
@@ -11,7 +46,9 @@ router.get('/:id', async (req, res) => {
 
   try {
 
-    const dbPostData = await Post.findByPk(req.params.id,{}); // i removed comments and user... mistake?
+    const dbPostData = await Post.findByPk(req.params.id,{
+
+    }); // i removed comments and user... mistake?
 
     const post = dbPostData.get({ plain: true });
 

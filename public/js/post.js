@@ -61,12 +61,25 @@ const sendUpdateButton = async (event) => {
     const id = document.querySelector('#first-update').getAttribute('data-update');
 console.log("WHERE AM I??? ID????",
 id) //works
-    const response = await fetch(`/api/posts/${id}`, {
+
+const post_content = document.querySelector('#message-text').value;
+const post_title = document.querySelector('#recipient-name').value;
+
+console.log("it never hurts to console",
+post_content,
+  post_title,
+  "OUCH");
+
+    const response = await fetch(`/api/posts/edit/${id}`, {
       method: 'PUT',
+      body: JSON.stringify({post_title, post_content}),
+      headers: {
+        'Content-Type': 'application/json',
+      },
     });
 
     if (response.ok) {
-      document.location.replace('/dashboard');
+      // document.location.replace('/dashboard');
     } else {
       alert('Failed to send final post update');
     }
