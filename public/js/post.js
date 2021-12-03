@@ -14,7 +14,7 @@ const newFormHandler = async (event) => {
      });
  
      if (response.ok) {
-       document.location.replace('/dashboard');
+      //  document.location.replace('/dashboard');
      } else {
        alert('Failed to create post');
      }
@@ -62,6 +62,7 @@ const sendUpdateButton = async (event) => {
 console.log("WHERE AM I??? ID????",
 id) //works
 
+
 const post_content = document.querySelector('#message-text').value;
 const post_title = document.querySelector('#recipient-name').value;
 
@@ -79,7 +80,7 @@ post_content,
     });
 
     if (response.ok) {
-      // document.location.replace('/dashboard');
+      document.location.replace('/dashboard');
     } else {
       alert('Failed to send final post update');
     }
