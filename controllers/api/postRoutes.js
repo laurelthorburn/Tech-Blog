@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const { User, Post, Comment } = require('../../models');
-const { update } = require('../../models/User');
 
 router.get('/:id', async (req, res) => {
   // console.log("but do we get me back?");

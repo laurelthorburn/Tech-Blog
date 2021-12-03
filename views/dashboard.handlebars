@@ -31,7 +31,7 @@
         <h4><a href="/{{post.id}}">{{post.post_title}}</a></h4>
       </div>
       <div class="col-md-4">
-        <button class="btn btn-sm btn-success" data-update="{{post.id}}" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">UPDATE</button>
+        <button class="btn btn-sm btn-success" data-update={{post.id}} data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" id="first-update">UPDATE</button>
         <button class="btn btn-sm btn-danger" data-id="{{post.id}}">DELETE</button>
       </div>
     </div>
@@ -64,7 +64,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Regret update</button>
-        <button type="button" class="btn btn-primary">Confirm update</button>
+        <button type="button" class="btn btn-primary" id="update-button" data-put="">Confirm update</button>
       </div>
     </div>
   </div>

@@ -55,6 +55,23 @@ document.querySelector('#recipient-name').value = postResponse.post_title;
   return postResponse;
   };
 };
+
+const sendUpdateButton = async (event) => {
+  if (event.target.hasAttribute('data-put')) {
+    const id = document.querySelector('#first-update').getAttribute('data-update');
+console.log("WHERE AM I??? ID????",
+id) //works
+    const response = await fetch(`/api/posts/${id}`, {
+      method: 'PUT',
+    });
+
+    if (response.ok) {
+      document.location.replace('/dashboard');
+    } else {
+      alert('Failed to send final post update');
+    }
+  }
+};
  
  document
    .querySelector('.new-post-form')
@@ -67,4 +84,8 @@ document.querySelector('#recipient-name').value = postResponse.post_title;
  document
    .querySelector('.post-list')
    .addEventListener('click', updateButtonHandler);
+ 
+ document
+   .querySelector('#update-button')
+   .addEventListener('click', sendUpdateButton);
  
