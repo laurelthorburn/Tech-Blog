@@ -176,8 +176,7 @@ git push origin yourname-branch
 * https://stackoverflow.com/questions/69439929/node-js-app-not-deploying-correctly-on-heroku
 * https://www.titanwolf.org/Network/q/1a7d3de8-97ea-4071-bb2e-029551021878/y
 * https://www.geeksforgeeks.org/express-js-res-json-function/
-* https://stackoverflow.com/questions/17499742
-* how-do-i-add-console-log-javascript-logic-inside-of-a-handlebars-template
+* https://stackoverflow.com/questions/17499742/how-do-i-add-console-log-javascript-logic-inside-of-a-handlebars-template
 
 
 
