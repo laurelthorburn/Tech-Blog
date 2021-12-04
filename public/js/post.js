@@ -1,3 +1,5 @@
+let postID;
+
 const newFormHandler = async (event) => {
    event.preventDefault();
  
@@ -24,6 +26,8 @@ const newFormHandler = async (event) => {
  const delButtonHandler = async (event) => {
    if (event.target.hasAttribute('data-id')) {
      const id = event.target.getAttribute('data-id');
+     console.log("delete id:",
+     id)
  
      const response = await fetch(`/api/posts/${id}`, {
        method: 'DELETE',
@@ -42,6 +46,9 @@ const updateButtonHandler = async (event) => {
   if (event.target.hasAttribute('data-update')) {
     const id = event.target.getAttribute('data-update');
   
+    postID = id;
+    console.log("update ID:",
+    id)
   const response = await fetch(`/api/posts/${id}`);
 
   const postResponse = await response.json(); //converts to readable data
@@ -58,20 +65,19 @@ document.querySelector('#recipient-name').value = postResponse.post_title;
 
 const sendUpdateButton = async (event) => {
   if (event.target.hasAttribute('data-put')) {
-    const id = document.querySelector('#first-update').getAttribute('data-update');
 console.log("WHERE AM I??? ID????",
-id) //works
+postID) //works
 
 
 const post_content = document.querySelector('#message-text').value;
 const post_title = document.querySelector('#recipient-name').value;
 
-console.log("it never hurts to console",
-post_content,
-  post_title,
-  "OUCH");
+// console.log("it never hurts to console",
+// post_content,
+//   post_title,
+//   "OUCH");
 
-    const response = await fetch(`/api/posts/edit/${id}`, {
+    const response = await fetch(`/api/posts/edit/${postID}`, {
       method: 'PUT',
       body: JSON.stringify({post_title, post_content}),
       headers: {
