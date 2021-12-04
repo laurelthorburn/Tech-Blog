@@ -154,11 +154,31 @@ git push origin yourname-branch
   ## Links
   
   Deployed Heroku Site: https://laurels-tech-babble.herokuapp.com/
+
   Github Site: https://github.com/laurelthorburn/Tech-Blog
 
   <a name="creditsection"></a>
 ## Resources/Credit
-* 
+* https://www.npmjs.com/package/express-session
+* https://www.npmjs.com/package/connect-session-sequelize
+* https://www.npmjs.com/package/express-handlebars
+* https://www.npmjs.com/package/bcryptjs
+* https://eslint.org/
+* https://learn.co/lessons/node-js-intro-to-handlebars
+* https://stackoverflow.com/questions/39031224/how-to-center-cards-in-bootstrap-4
+* https://getbootstrap.com/docs/4.0/components/card/#border
+* https://sequelize.org/master/manual/eager-loading.html
+* https://stackoverflow.com/questions/44878624/node-js-handelbars-error-missing-helper-compare
+* https://www.youtube.com/watch?v=uA9rxsezo24&t=515s&ab_channel=FutureStudio
+* https://stackoverflow.com/questions/41993759/cant-get-username-from-req-user-to-output-in-express
+* https://stackoverflow.com/questions/16434893/node-express-passport-req-user-undefined
+* https://stackoverflow.com/questions/58015788/how-to-get-posts-by-member
+* https://stackoverflow.com/questions/69439929/node-js-app-not-deploying-correctly-on-heroku
+* https://www.titanwolf.org/Network/q/1a7d3de8-97ea-4071-bb2e-029551021878/y
+* https://www.geeksforgeeks.org/express-js-res-json-function/
+* https://stackoverflow.com/questions/17499742
+* how-do-i-add-console-log-javascript-logic-inside-of-a-handlebars-template
+
 
 
 
