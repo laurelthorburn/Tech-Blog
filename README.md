@@ -17,10 +17,9 @@ The purpose of this project was to create a full stack blog application.  This a
 7. [ Contributing. ](#contribsection)
 8. [ Tests. ](#testsection)
 9. [ Questions. ](#questionssection)
-10. [ Video. ](#videosection)
-11. [ Screenshots. ](#picsection)
-12. [ Links. ](#linksection)
-13. [ Resources/Credit. ](#creditsection)
+10. [ Screenshots. ](#picsection)
+11. [ Links. ](#linksection)
+12. [ Resources/Credit. ](#creditsection)
 
 <a name="usersection"></a>
 ## User Story
@@ -73,20 +72,20 @@ THEN I am able to view comments but I am prompted to log in again before I can a
 ## Installation
 * Clone the repository using:
 ```
-git clone https://github.com/laurelthorburn/E-Commerce-Back-End.git
+git clone https://github.com/laurelthorburn/Tech-Blog.git
 ```
 * Ensure you are in the current working directory
 * Open terminal in working directory and type:
 ```
 npm init
 ```
-* Install dependencies (inquirer, mysql2, dotenv, and sequelize) by opening the terminal (ctrl + j on windows) and running:
+* Install dependencies (bcrypt, connection-session-sequelize, dotenv, express, express-handlebars, express-session, mysql2, and sequelize) by opening the terminal (ctrl + j on windows) and running:
 ```
 npm install
 ```
 OR each of the following:
 ```
-npm install inquirer || npm install mysql2 || npm install dotenv || npm install sequelize
+npm install bcrypt || npm install connection-session-sequelize ||  npm install dotenv || npm install || express npm install express-session || npm install express-handlebars || npm install mysql2 || npm install sequelize
 ```
 
 <a name="usagesection"></a>
@@ -95,16 +94,16 @@ npm install inquirer || npm install mysql2 || npm install dotenv || npm install 
 ```
 mysql -u root -p
 ```
-* Enter mysql password and then SOURCE the schema file and then the seeds file (always SOURCE schema.sql first)
+* Enter mysql password and then SOURCE the schema file
 ```
-SOURCE schema.sql || SOURCE seeds.sql
+SOURCE schema.sql
 ```
 * Open root folder in the integrated terminal and type in the following order:
 ```
 npm run seed
-npm run watch
+npm run dev (only works if nodemon is installed)
 ```
-* Open Insomnia and enter the correct HTTP method (i.e., GET, POST, PUT, or DELETE) and the correct URL.
+* Open your localhost:3001 
 * Enjoy!
 
 <a name="licensesection"></a>
@@ -144,10 +143,6 @@ git push origin yourname-branch
   Want to see more of my work? [Click here!](https://github.com/laurelthorburn)
 
   Questions/comments/concerns? Please send an email to codinglaurel@gmail.com
-  
-  <a name="videosection"></a>
-## Video
-   Video Link: https://drive.google.com/file/d/19TGTg83lLx4pnruLmbYu221njSLdIGDm/view?usp=sharing
 
   <a name="picsection"></a>
   ## Screenshots
@@ -158,15 +153,12 @@ git push origin yourname-branch
   <a name="linksection"></a>
   ## Links
   
-  Github Site: https://github.com/laurelthorburn/Employee-Tracker
+  Deployed Heroku Site: https://laurels-tech-babble.herokuapp.com/
+  Github Site: https://github.com/laurelthorburn/Tech-Blog
 
   <a name="creditsection"></a>
 ## Resources/Credit
-* https://sequelize.org/master/manual/assocs.html
-* https://sequelize.org/master/manual/model-basics.html
-* https://sequelize.org/master/manual/legacy.html
-* https://sequelize.org/master/manual/model-querying-basics.html
-* https://docs.insomnia.rest/insomnia/environment-variables/
+* 
 
 
 
