@@ -36,7 +36,7 @@ const loginFormHandler = async (event) => {
       if (response.ok) {
         document.location.replace('/');
       } else {
-        alert('Failed to sign up. Double bummer dude!');
+        alert('Failed to sign up. Please check that your password is at least six characters. Bummer dude!');
       }
     }
   };
