@@ -79,7 +79,7 @@ git clone https://github.com/laurelthorburn/Tech-Blog.git
 ```
 npm init
 ```
-* Install dependencies (bcrypt, connection-session-sequelize, dotenv, express, express-handlebars, express-session, mysql2, and sequelize) by opening the terminal (ctrl + j on windows) and running:
+* Install dependencies (bcrypt, connect-session-sequelize, dotenv, express, express-handlebars, express-session, mysql2, and sequelize) by opening the terminal (ctrl + j on windows) and running:
 ```
 npm install
 ```
